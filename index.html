@@ -4,16 +4,71 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/svg" href="./pi.svg" />
+
     <link rel="stylesheet" href="styles.css" />
     <script src="./index.js" defer></script>
-    <title>Pi Estimation</title>
+    <title>Estimate &pi;</title>
   </head>
   <body>
-    <label for="max">Maximum Random Number</label>
-    <input type="number" name="max" class="max-random" value="100000" />
-    <label for="repetitions">Number of repetitions</label>
-    <input type="number" name="repetitions" class="repetitions" value="10000" />
-    <div class="estimate">Pi = <span class="value"></span></div>
-    <button class="btn">Estimate</button>
+    <header><h1>Using Random Numbers to Estimate &pi;</h1></header>
+
+    <main>
+      <div class="explanation">
+        <p>
+          In mathematics, pi (written as the Greek letter for p, or &pi;) is the
+          ratio of the circumference of any circle to the diameter of that
+          circle.
+        </p>
+        <p>
+          This website uses randomly generated numbers to estimate the value of
+          &pi; by using the property that the probability of any number two
+          numbers being coprime is 6 / &pi;<sup>2</sup>.
+        </p>
+        <p>
+          If many random number pairs are created (say
+          <span class="pairs-output">10000</span>), and the number of coprime
+          pairs are counted, the probability that any number is coprime can be
+          approximated
+        </p>
+        <p class="math">
+          P(pair is coprime) = number of coprime pairs / total number of pairs
+        </p>
+        <p class="math">=> &pi; = &Sqrt;6 / &Sqrt;P</p>
+      </div>
+      <div class="parameter-input">
+        <div class="field">
+          <label for="max"
+            >Maximum Random Number:
+            <span class="max-random-output">10000</span></label
+          >
+          <input
+            type="range"
+            name="max"
+            class="max-random"
+            min="1000"
+            max="100000"
+            value="10000"
+          />
+        </div>
+        <div class="field">
+          <label for="pairs"
+            >Number of pairs: <span class="pairs-output">10000</span></label
+          >
+          <input
+            type="range"
+            name="pairs"
+            class="pairs"
+            min="1000"
+            max="100000"
+            value="10000"
+          />
+        </div>
+      </div>
+      <div class="result">
+        <div class="estimate">&pi; = <span class="value"></span></div>
+        <button class="btn">Estimate</button>
+      </div>
+    </main>
   </body>
 </html>

@@ -1,7 +1,22 @@
 const value = document.querySelector('.value')
 const estimateBtn = document.querySelector('.btn')
 const maxInput = document.querySelector('.max-random')
-const repetitionsInput = document.querySelector('.repetitions')
+const maxOutput = document.querySelector('.max-random-output')
+const pairsInput = document.querySelector('.pairs')
+const pairsOutputs = document.querySelectorAll('.pairs-output')
+
+window.onload = (e) => {
+  estimateAndUpdate()
+}
+
+maxInput.addEventListener('input', (e) => {
+  maxOutput.innerText = e.target.value
+})
+pairsInput.addEventListener('input', (e) => {
+  pairsOutputs.forEach((output) => {
+    output.innerText = e.target.value
+  })
+})
 
 function estimateAndUpdate() {
   const estimatedValue = estimate()
@@ -13,10 +28,10 @@ estimateBtn.addEventListener('click', () => {
 })
 
 function estimate() {
-  const REPETITIONS = parseInt(repetitionsInput.value)
+  const pairs = parseInt(pairsInput.value)
   let coprimeCount = 0
   let total = 0
-  for (let i = 0; i < REPETITIONS; i++) {
+  for (let i = 0; i < pairs; i++) {
     if (gcd(random(), random()) === 1) {
       coprimeCount++
     }
